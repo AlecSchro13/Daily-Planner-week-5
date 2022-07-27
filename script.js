@@ -17,50 +17,23 @@ var row = ""
     row.append(col2)
     row.append(col3)
     $(".container").append(row)
-    getlocalStorage(i)
   }
   $("saveBtn").click(function(e){
     var id = $(this).data("id")
-    var inputText = $(this).parent().siblings().find("input").val()
+    var inputText = $(this).parent().siblings().find("saveBtn").val()
     localStorage.setItem(id,inputText)
     })
-   //  Convert Am to Pm
-    function displayAmorPm(hour){
-      var b=""
-      if(hour<=12){
-        b= "AM"
-      }else{
-        b="PM"
-      }
-      hour = hour % 12
-      hour = hour ? hour : 12
-      return hour + " " + b
-    }
-   });
-   
-   function getlocalStorage(hour){
-    let inputval = localStorage.getItem(hour)
-    if(true){
-     //  $("input").data(`input${hour}`)
-     var text= $(`input#inputText${hour}`).val(inputval)
-     console.log(text)
-    }
-}
-    
-//update color
-    function updateColor(){
-      var hour = new Date().getHours();
-      for (var i= 9 ; i<=18; i++){
-        console.log(hour,i)
-        if(hour==i ) {
-         $(`#inputText${i}`).css("background","red")
-        }else  if(hour<i ){
-         
-          $(`#inputText${i}`).css("background","lightblue")
- 
+
+      //  Convert Am to Pm
+      function displayAmorPm(hour){
+        var b=""
+        if(hour<=12){
+          b= "AM"
+        }else{
+          b="PM"
         }
+        hour = hour % 12
+        hour = hour ? hour : 12
+        return hour + " " + b
       }
-    }
-    setInterval(function(){
-      updateColor()
-    },1000)
+     });
